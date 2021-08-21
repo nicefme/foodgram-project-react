@@ -18,4 +18,4 @@ python manage.py loaddata correct.json
 DB_ENGINE=django.db.backends.postgresql
 DB_NAME=postgres
 POSTGRES_USER=nicefme
-POSTGRES_PASSWORD=6842l12
+POSTGRES_PASSWORD=6
