@@ -1,0 +1,68 @@
+class SubscribeViewSet(#mixins.ListModelMixin,
+                        viewsets.ModelViewSet):
+                       #mixins.DestroyModelMixin,
+                       #viewsets.GenericViewSet):#viewsets.ModelViewSet):
+    serializer_class = SubscribeSerializers
+    paginator = None
+   # queryset = User.objects.all()
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        #user = self.request.user
+        user_id = int(self.request.parser_context['kwargs'].get('user_id'))
+        
+        queryset = User.objects.filter(id=user_id)
+       # querysettt = User.objects.get(id=user_id)
+        #ss = self.get_serializer(queryset, many=True)
+      #  dd
+        return queryset
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+
+        author_id = int(self.request.parser_context['kwargs'].get('user_id'))
+        #request = self.context.get('request', None)
+        #if request:
+        user_id = request.user.id
+       # ss
+      #  author_id = self.id
+       # ss
+       # serializer.is_valid(raise_exception=True)
+        
+        try:
+            Subscription.objects.create(author_id=author_id, user_id=user_id)
+        except IntegrityError:
+            None
+      #      raise ValidationError('Пользователь уже подписан на автора')
+      ##      return Response(status=status.HTTP_403_FORBIDDEN, data=ValidationError('Пользователь уже подписан на автора'))
+        return Response(serializer.data)
+
+   # @action(detail=True, methods=['delete'])
+  #  def perform_destroy(self, instance, pk):
+       # author_id = int(self.request.parser_context['kwargs'].get('user_id'))
+        #request = self.context.get('request', None)
+        #if request:
+        #user_id = instance.user.id
+       # ss
+      #  Subscription.objects.delete(author_id=author_id, user_id=user_id)
+       # ss
+      #  instance.delete()
+   # @action(detail=False, methods=['DELETE'])
+    def destroy(self, request, id):
+        ss
+        instance = self.get_object()
+        self.perform_destroy(instance)
+
+        author_id = int(self.request.parser_context['kwargs'].get('user_id'))
+        ss
+        user_id = request.user.id
+        Subscription.objects.delete(author_id=author_id, user_id=user_id)
+        ss
+        return Response(status=status.HTTP_204_NO_CONTENT)
