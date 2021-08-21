@@ -29,12 +29,11 @@ class Tag(models.Model):
 class Ingredient(models.Model):
     name = models.CharField(max_length=200,
                             verbose_name='Ингредиент',
-                            #unique=True,
                             )
-    measurement_unit = models.CharField(max_length=200,
-                            verbose_name='Единица измерения',
-                            #unique=True,
-                            )
+    measurement_unit = models.CharField(
+        max_length=200,
+        verbose_name='Единица измерения',
+    )
 
     class Meta:
         ordering = ['name']
@@ -63,10 +62,7 @@ class Recipe(models.Model):
     tags = models.ManyToManyField(Tag,
                                   related_name='tags',
                                   verbose_name='Тег',)
-    #tags = models.ForeignKey(Tag,
-     #                        on_delete=models.CASCADE,
-      #                       related_name='recipes',
-       #                      verbose_name='Теги')
+
     cooking_time = models.PositiveIntegerField(
         validators=[MinValueValidator(1)],
         verbose_name='Время приготовления, мин'
@@ -100,6 +96,7 @@ class IngredientAmount(models.Model):
         default=1,
         validators=[MinValueValidator(1), ]
     )
+
     class Meta:
         verbose_name = 'Количество игредиентов в рецепте'
         verbose_name_plural = verbose_name

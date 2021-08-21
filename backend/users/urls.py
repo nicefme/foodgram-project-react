@@ -1,5 +1,4 @@
-from django.urls import path, include, re_path
-from rest_framework.routers import DefaultRouter, SimpleRouter
+from django.urls import path, include
 
 from .views import FollowAPIView, ListFollowView, UserView
 
@@ -13,8 +12,4 @@ urlpatterns = [
          name='subscriptions'),
     path('users/me/', UserView.as_view(), name='me'),
     path('', include('djoser.urls')),
-] 
-
-
-
-
+]

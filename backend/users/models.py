@@ -9,10 +9,7 @@ class UserRole(models.TextChoices):
 
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
-
     username = models.CharField(max_length=150, unique=True)
-
-
     first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     role = models.CharField(
@@ -51,6 +48,6 @@ class Follow(models.Model):
                 name='unique_follow'
             )
         ]
-    
+
     def __str__(self):
         return f'{self.user} --> {self.author}'

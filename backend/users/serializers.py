@@ -1,30 +1,27 @@
 from django.conf import settings
-from django.db.models import fields
 from rest_framework import serializers
-from rest_framework.validators import UniqueValidator, UniqueTogetherValidator
+from rest_framework.validators import UniqueTogetherValidator
 from django.contrib.auth import get_user_model
-#from djoser.serializers import UserSerializer as UserSerializerOne
-#from djoser.serializers import UserCreateSerializer
-from django.shortcuts import get_object_or_404
 
 from users.models import Follow
-from main.models import Recipe
-#from main.serializer import RecipeSerializers, IngredientForRecipeSerializers
 
 
 User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
-
     is_subscribed = serializers.SerializerMethodField()
 
     class Meta:
         model = User
         fields = (
-            'id', 'username', 'email', 'first_name', 'last_name', 'is_subscribed',
+            'id',
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'is_subscribed',
         )
-        
 
     def get_is_subscribed(self, obj):
         request = self.context.get('request')
@@ -35,7 +32,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ShowFollowersSerializer(serializers.ModelSerializer):
-
     recipes = serializers.SerializerMethodField()
     recipes_count = serializers.SerializerMethodField()
     is_subscribed = serializers.SerializerMethodField()
@@ -43,15 +39,15 @@ class ShowFollowersSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-            'id', 'username', 'email', 'first_name', 'last_name', 'is_subscribed', 'recipes', 'recipes_count'
+            'id',
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'is_subscribed',
+            'recipes',
+            'recipes_count'
         )
-
-  #  def get_recipes_count(self, obj):
-  #      author = obj.id
-   #     queryset = Recipe.objects.filter(author=author)
-   #     if queryset.exists():
-   #         return queryset.count()
-  #      return 0
 
     def get_is_subscribed(self, user):
         current_user = self.context.get('current_user')
@@ -99,7 +95,6 @@ class FollowSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Нельзя подписаться на самого себя'
             )
-
         return data
 
     def to_representation(self, instance):
@@ -108,4 +103,3 @@ class FollowSerializer(serializers.ModelSerializer):
             instance.author,
             context={'request': request}
         ).data
-
