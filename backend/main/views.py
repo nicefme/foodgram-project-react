@@ -68,19 +68,18 @@ class FavoriteAPIView(APIView):
         serializer = AddFavouriteRecipeSerializer(
             data=data, context={'request': request}
         )
-        if not serializer.is_valid():
-            return Response(
-                serializer.errors,
-                status=status.HTTP_400_BAD_REQUEST
-            )
+        serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def delete(self, request, recipe_id):
         user = request.user
         recipe = get_object_or_404(Recipe, id=recipe_id)
-        count_of_deleted, _ = Favorite.objects.get(user=user,
-                                                   recipe=recipe).delete()
+        count_of_deleted, _ = get_object_or_404(
+            Favorite,
+            user=user,
+            recipe=recipe
+        ).delete()
         if count_of_deleted == 0:
             return Response(
                 'Такого рецепта нет в избранном.',
@@ -100,18 +99,15 @@ class ShoppingVeiwSet(APIView):
         }
         context = {'request': request}
         serializer = ShoppingListSerializer(data=data, context=context)
-        if not serializer.is_valid():
-            return Response(
-                serializer.errors,
-                status=status.HTTP_400_BAD_REQUEST
-            )
+        serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def delete(self, request, recipe_id):
         user = request.user
         recipe = get_object_or_404(Recipe, id=recipe_id)
-        count_of_deleted, _ = ShoppingList.objects.get(
+        count_of_deleted, _ = get_object_or_404(
+            ShoppingList,
             user=user,
             recipe=recipe
         ).delete()

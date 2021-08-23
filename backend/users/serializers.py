@@ -52,9 +52,7 @@ class ShowFollowersSerializer(serializers.ModelSerializer):
     def get_is_subscribed(self, user):
         current_user = self.context.get('current_user')
         other_user = user.following.all()
-        if user.is_anonymous:
-            return False
-        if other_user.count() == 0:
+        if user.is_anonymous or other_user.count() == 0:
             return False
         if Follow.objects.filter(user=user, author=current_user).exists():
             return True
