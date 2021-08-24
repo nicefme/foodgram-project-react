@@ -1,6 +1,7 @@
 from django.conf import settings
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
+from djoser.serializers import UserCreateSerializer
 from django.contrib.auth import get_user_model
 
 from users.models import Follow
@@ -29,6 +30,19 @@ class UserSerializer(serializers.ModelSerializer):
             return False
         user = request.user
         return Follow.objects.filter(author=obj, user=user).exists()
+
+
+class UserCreateSerializer(UserCreateSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'password'
+        )
 
 
 class ShowFollowersSerializer(serializers.ModelSerializer):

@@ -24,7 +24,9 @@ SECRET_KEY = (
     'django-insecure-(wqb5l34ngkzek56%nssdu*+2=_z2kov5l+ffs$9ci5cdy08q2'
 )
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*', 'backend', ]
 
@@ -83,14 +85,14 @@ WSGI_APPLICATION = 'foodgram.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': os.environ.get('DB_NAME'),
-        # 'USER': os.environ.get('POSTGRES_USER'),
-        # 'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        # 'HOST': os.environ.get('DB_HOST'),
-        # 'PORT': os.environ.get('DB_PORT'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': os.environ.get('DB_ENGINE'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
 
@@ -139,7 +141,7 @@ REST_FRAMEWORK = {
 DJOSER = {
     'HIDE_USERS': False,
     'SERIALIZERS': {
-        'user_create': 'users.serializers.UserSerializer',
+        'user_create': 'users.serializers.UserCreateSerializer',
         'current_user': 'users.serializers.UserSerializer',
         'user': 'users.serializers.UserSerializer',
     },
