@@ -114,6 +114,10 @@ venv.bak/
 virtualenv/
 virtualenv.bak/
 
+migrations
+migrations/
+migrations/*
+
 # Spyder project settings
 .spyderproject
 .spyproject
