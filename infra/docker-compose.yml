@@ -23,7 +23,7 @@ services:
       - db
     env_file:
       - ../.env
-  
+
   frontend:
     build:
       context: ../frontend
