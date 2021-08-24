@@ -9,7 +9,7 @@ services:
       - ../.env
     restart: always
 
- 
+
   backend:
     image: nicefme/foodgram:latest
     #build: 
@@ -23,7 +23,7 @@ services:
       - db
     env_file:
       - ../.env
-
+  
   frontend:
     build:
       context: ../frontend
