@@ -1,3 +1,4 @@
+# server
 version: '3.3'
 services:
   db:
@@ -24,7 +25,6 @@ services:
   frontend:
     image: nicefme/foodgram_frontend:v1.0
     volumes:
-      #- frontend_data:/app/result_build/
       - frontend_data:/app/result_build/build/
     depends_on:
       - db
