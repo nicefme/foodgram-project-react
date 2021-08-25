@@ -27,7 +27,7 @@ pass: password22!
 https://github.com/nicefme/foodgram-project-react.git
 
 
-#### Запуск проекта:
+### Запуск проекта:
 #### Подготовка репозитория, Secrets
 
 - Сделайте [Fork проекта](https://github.com/nicefme/foodgram-project-react) себе в репозиторий GitHub;
@@ -66,15 +66,11 @@ https://github.com/nicefme/foodgram-project-react.git
 Проверьте установку (должна вернуться версия docker-compose):  
 ``` docker-compose --version ```;
 - Создайте на сервере два файла и скопируйте в них код из проекта на GitHub:  
-> docker-compose.yaml в home/<username>/infra/docker-compose.yml  
+> docker-compose.yaml из главной дериктории в home/<username>/docker-compose.yml  
 ``` sudo nano docker-compose.yaml ```  
-> nginx.conf в home/<username>/infra/nginx.conf  
+> default.conf из папки nginx в home/<username>/nginx/default.conf  
 ``` mkdir nginx ```  
 ``` sudo nano nginx/default.conf ```  
-
-
-
-
 
 
 ### Настройка приложения на сервере:
