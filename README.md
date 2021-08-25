@@ -80,11 +80,11 @@ https://github.com/nicefme/foodgram-project-react.git
 
 - По окончании развертывания проекта, сделать миграции на сервере:  
 ``` sudo docker-compose exec backend python manage.py makemigrations APP_NAME ``` APP_NAMES: main, users  
-``` docker-compose exec backend python manage.py migrate --noinput ```  
-``` docker-compose exec backend python manage.py collectstatic --no-input ```  
+``` sudo docker-compose exec backend python manage.py migrate --noinput ```  
+``` sudo docker-compose exec backend python manage.py collectstatic --no-input ```  
 
 #### Загрузка ингредиентов в БД:
-```docker-compose exec backend python manage.py loaddata ingredients.json ```
+``` sudo docker-compose exec backend python manage.py loaddata ingredients.json ```
 
 #### Создание суперпользователя:
-``` docker-compose exec backend  python manage.py createsuperuser ```
+``` sudo docker-compose exec backend  python manage.py createsuperuser ```

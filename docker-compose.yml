@@ -12,9 +12,6 @@ services:
 
   backend:
     image: nicefme/foodgram:latest
-    #build: 
-    #  context: ../backend 
-    #  dockerfile: Dockerfile
     restart: always
     volumes:
       - static_value:/code/backend_static/
@@ -25,10 +22,7 @@ services:
       - ./.env
   
   frontend:
-    #build:
-    #  context: ./frontend
-    #  dockerfile: Dockerfile
-    image: nicefme/foodgram:latest
+    image: nicefme/foodgram_frontend:v1.0
     volumes:
       - frontend_data:/app/result_build/
     depends_on:
