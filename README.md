@@ -48,7 +48,7 @@ https://github.com/nicefme/foodgram-project-react.git
 > DB_PORT=5432 - порт для подключения к БД;  
 > TELEGRAM_TO - ID своего телеграм-аккаунта. Узнать свой ID можно у бота @userinfobot;
 > TELEGRAM_TOKEN - токен вашего бота. Получить этот токен можно у бота @BotFather
-
+ 
 #### Подготовка сервера
 
 - Запустите сервер и зайдите на него ``` ssh username@ip_address ```;
