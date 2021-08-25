@@ -1,6 +1,9 @@
 # Foodgram
 
-ССЫЛКА - Foodgram  
+http://84.201.160.124/recipes/ - Foodgram  
+
+email: admin@mail.com
+pass: password22!
 
 ![Workflow status](https://github.com/nicefme/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
 
