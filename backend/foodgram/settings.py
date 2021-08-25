@@ -28,7 +28,7 @@ SECRET_KEY = (
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['*', 'backend', ]
+ALLOWED_HOSTS = ['*', 'backend', '130.193.42.120']
 
 
 # Application definition
