@@ -1,6 +1,6 @@
 # Foodgram
 
-http://84.201.160.124/recipes/ - Foodgram  
+http://www.foodgramforu.ml/recipes/ - Foodgram  
 
 ![Workflow status](https://github.com/nicefme/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
 
@@ -53,7 +53,7 @@ https://github.com/nicefme/foodgram-project-react.git
 ``` sudo apt update ```;  
 ``` sudo apt upgrade -y ```;  
 - Установите nginx ``` sudo apt install nginx -y ```;
-- Остановите службу nginx ``` sudo systemctl stop nginx ``;
+- Остановите службу nginx ``` sudo systemctl stop nginx ```;
 - Установите docker ``` sudo apt install docker.io ```;
 - Установите docker-compose:  
 Выполните команду, чтобы загрузить текущую стабильную версию Docker Compose:  
