@@ -28,7 +28,13 @@ SECRET_KEY = (
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['*', 'backend', '130.193.42.120']
+ALLOWED_HOSTS = [
+    # '*',
+    'backend',
+    '146.185.208.37',
+    'foodgramforu.ml',
+    'www.foodgramforu.ml'
+]
 
 
 # Application definition
